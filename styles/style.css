@@ -1,6 +1,7 @@
 body {
   background-color: #c2b280;
   margin: 0px;
+  text-align: center;
 }
 
 .header {
@@ -22,8 +23,13 @@ body {
 }
 
 .instructions-row {
-  margin: auto;
+  margin: 0 auto;
   width: 400px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .instructions-number {
@@ -42,9 +48,49 @@ body {
   color: #ffffff;
 }
 
+.shell-row {
+  text-align: center;
+  white-space: nowrap;
+}
+
 .shell-container {
+  display: inline-block;
   cursor: pointer;
   padding: 10px;
-  height: 250px;
   width: 250px;
+  max-width: 100%;
+  height: auto;
+}
+
+.start-row {
+  background-color: #ffcc57;
+  color: #302579;
+  padding: 25px 10px 20px 10px;
+  font-family: "Indie Flower";
+  font-size: 25px;
+  font-weight: bold;
+  width: 150px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.current-streak {
+  color: #ffffff;
+  padding: 10px;
+  font-family: "Indie Flower";
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.streak-counter {
+  color: #ffffff;
+  padding: 10px;
+  font-size: 50px;
+}
+
+table.counter {
+  margin-left: auto;
+  margin-right: auto;
 }
