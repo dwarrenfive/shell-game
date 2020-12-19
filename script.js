@@ -4,24 +4,23 @@ let shellImg3 = document.getElementById("seashell3");
 let piratePath = "assets/images/pirate.png";
 let chestPath = "assets/images/chest.png";
 let pearlPath = "assets/images/pearl.png";
+let closedShell = "assets/images/closed_seashell.png";
 let numShells = 3;
 let openShell1;
 let openShell2;
 let openShell3;
-let closedShell = "assets/images/closed_seashell.png";
 
 document.body.onload = function () {
   randomPiratePosition();
 };
 
-const isClicked = (shell) => {};
+const isClicked = (shell) => {
+  shell.src === closedShell ? false : true;
+};
 
 const numOfPlays = () => {
   numShells--;
-  if (numShells === 0) {
-    console.log("Game Over!");
-    // gameOver();
-  }
+  numShells === 0 ? gameOver() : null;
 };
 
 const randomPiratePosition = () => {
@@ -42,16 +41,17 @@ const randomPiratePosition = () => {
 };
 
 shellImg1.onclick = () => {
-  shellImg1.src = openShell1;
-  numOfPlays();
+  !isClicked(openShell1) ? (shellImg1.src = openShell1, numOfPlays()) : null;
 };
 
 shellImg2.onclick = () => {
-  shellImg2.src = openShell2;
-  numOfPlays();
+  !isClicked(openShell2) ? (shellImg2.src = openShell2, numOfPlays()) : null;
 };
 
 shellImg3.onclick = () => {
-  shellImg3.src = openShell3;
-  numOfPlays();
+  !isClicked(openShell3) ? (shellImg3.src = openShell3, numOfPlays()) : null;
 };
+
+const gameOver = () => {
+  console.log('game over')
+}
