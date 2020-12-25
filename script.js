@@ -1,6 +1,7 @@
 let shellImg1 = document.getElementById("seashell1");
 let shellImg2 = document.getElementById("seashell2");
 let shellImg3 = document.getElementById("seashell3");
+let startButton = document.getElementById("start-row");
 let piratePath = "assets/images/pirate.png";
 let chestPath = "assets/images/chest.png";
 let pearlPath = "assets/images/pearl.png";
@@ -10,17 +11,29 @@ let openShell1;
 let openShell2;
 let openShell3;
 
-document.body.onload = function () {
-  randomPiratePosition();
+const isPirate = (shell) => {
+  if (shell.getAttribute("src") === piratePath) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 const isClicked = (shell) => {
-  shell.src === closedShell ? false : true;
+  if (shell.getAttribute("src") === closedShell) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
-const numOfPlays = () => {
+const numOfPlays = (shell) => {
   numShells--;
-  numShells === 0 ? gameOver() : null;
+  if (numShells === 0) {
+    gameOver("win");
+  } else if (isPirate(shell)) {
+    gameOver();
+  }
 };
 
 const randomPiratePosition = () => {
@@ -40,18 +53,33 @@ const randomPiratePosition = () => {
   }
 };
 
-shellImg1.onclick = () => {
-  !isClicked(openShell1) ? (shellImg1.src = openShell1, numOfPlays()) : null;
+randomPiratePosition();
+
+seashell1.onclick = () => {
+  if (!isClicked(shellImg1)) {
+    seashell1.src = openShell1;
+    numOfPlays(shellImg1);
+  }
 };
 
-shellImg2.onclick = () => {
-  !isClicked(openShell2) ? (shellImg2.src = openShell2, numOfPlays()) : null;
+seashell2.onclick = () => {
+  if (!isClicked(shellImg2)) {
+    seashell2.src = openShell2;
+    numOfPlays(shellImg2);
+  }
 };
 
-shellImg3.onclick = () => {
-  !isClicked(openShell3) ? (shellImg3.src = openShell3, numOfPlays()) : null;
+seashell3.onclick = () => {
+  if (!isClicked(shellImg3)) {
+    seashell3.src = openShell3;
+    numOfPlays(shellImg3);
+  }
 };
 
-const gameOver = () => {
-  console.log('game over')
-}
+const gameOver = (status) => {
+  if (status === "win") {
+    startButton.innerHTML = "Winner! Play again?";
+  } else {
+    startButton.innerHTML = "Game over! Play again?";
+  }
+};
