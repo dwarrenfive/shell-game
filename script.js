@@ -29,7 +29,7 @@ const isClicked = (shell) => {
 
 const numOfPlays = (shell) => {
   numShells--;
-  if (numShells === 0) {
+  if (isPirate(shell) && numShells === 0) {
     gameOver("win");
   } else if (isPirate(shell)) {
     gameOver();
@@ -52,7 +52,6 @@ const randomPiratePosition = () => {
     openShell2 = pearlPath;
   }
 };
-
 randomPiratePosition();
 
 seashell1.onclick = () => {
@@ -82,4 +81,12 @@ const gameOver = (status) => {
   } else {
     startButton.innerHTML = "Game over! Play again?";
   }
+};
+
+const playAgain = () => {
+  location.reload();
+};
+
+startButton.onclick = () => {
+  playAgain();
 };
